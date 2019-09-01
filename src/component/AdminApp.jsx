@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-
+import ListUsersComponent from './ListUsersComponent';
 class AdminApp extends Component {
     render() {
-        return (
-              <h1>Admin Application</h1>
-        )
+        return (<>
+            <h1>Instructor Application</h1>
+            <ListUsersComponent/>
+          </>
+      )
     }
 }
 
