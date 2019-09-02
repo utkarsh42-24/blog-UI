@@ -23,6 +23,10 @@ class ListUsersComponent extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {             // 1. To display courses, we need to make them available to the component.
+            users: [],             //  We add courses to the state of the component and initialize it in the constructor.
+            message: null
+        }
         this.refreshUsers = this.refreshUsers.bind(this);
     }
 
@@ -35,15 +39,16 @@ class ListUsersComponent extends Component {
             .then(
                 response => {
                     console.log(response);
+                    this.setState({ users: response.data })   // 2. When the response comes back with data, we update the state.
                 }
             )
     }
 
 
-    render() {
+    render() {         // 3. We have data in the state. How do we display it? We need to update the render method.                                
         return (
             <div className="container">
-                <h3>All Courses</h3>
+                <h3>All Users</h3>
                 <div className="container">
                     <table className="table">
                         <thead>
@@ -52,11 +57,16 @@ class ListUsersComponent extends Component {
                                 <th>Name</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>DemoUser1</td>
-                            </tr>
+                        <tbody>                                       
+                            {                                         // In JSX, we use {} to execute JavaScript code.
+                                this.state.users.map(
+                                    user =>
+                                        <tr key={user.userID}>       
+                                            <td>{user.userID}</td>
+                                            <td>{user.name}</td>
+                                        </tr>
+                                )
+                            }
                         </tbody>
                     </table>
                 </div>
