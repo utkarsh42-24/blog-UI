@@ -3,7 +3,7 @@ import ListUsersComponent from './ListUsersComponent';
 class AdminApp extends Component {
     render() {
         return (<>
-            <h1>Instructor Application</h1>
+            <h1>Blogging : Admin Application</h1>
             <ListUsersComponent/>
           </>
       )

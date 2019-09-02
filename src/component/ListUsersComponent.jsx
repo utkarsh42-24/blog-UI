@@ -1,6 +1,44 @@
 import React, { Component } from 'react';
+import UserDataService from '../service/UserDataService';
 
 class ListUsersComponent extends Component {
+
+    // constructor(props) {
+    //     super(props)
+    //     this.refreshCourses = this.refreshCourses.bind(this)
+    // }
+
+    // componentDidMount() {
+    //     this.refreshCourses();
+    // }
+
+    // refreshCourses() {
+    //     CourseDataService.retrieveAllCourses(INSTRUCTOR)//HARDCODED
+    //         .then(
+    //             response => {
+    //                 console.log(response);
+    //             }
+    //         )
+    // }
+
+    constructor(props) {
+        super(props)
+        this.refreshUsers = this.refreshUsers.bind(this);
+    }
+
+    componentDidMount(){
+        this.refreshUsers();
+    }
+
+    refreshUsers(){
+        UserDataService.retrieveAllUsers()
+            .then(
+                response => {
+                    console.log(response);
+                }
+            )
+    }
+
 
     render() {
         return (
@@ -25,6 +63,7 @@ class ListUsersComponent extends Component {
             </div>
         )
     }
+
 }
 
 export default ListUsersComponent;
